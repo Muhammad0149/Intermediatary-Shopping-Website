@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* (No changes to CSS - it remains as you provided) */
+    </style>
+</head>
+<body>
+    <h2>User Dashboard</h2>
+
+    <!-- Top Navigation Links -->
+    <div style="text-align: center; margin-bottom: 10px;">
+        <a class="my-orders-link" href="/my_orders">Check My Orders</a> |
+        <a class="my-orders-link" href="/cart">Cart</a> |
+        <a class="logout-link" href="/logout">Logout</a>
+    </div>
+
+    <!-- Search & Sort Form -->
+    <form method="GET" action="{{ url_for('dashboard') }}" class="search-form">
+        <select name="filter_by" required>
+            <option value="PName" {% if request.args.get('filter_by') == 'PName' %}selected{% endif %}>Name</option>
+            <option value="CCategory" {% if request.args.get('filter_by') == 'CCategory' %}selected{% endif %}>Category</option>
+        </select>
+
+        <input type="text" name="search" placeholder="Search..." value="{{ request.args.get('search', '') }}">
+
+        <select name="sort_by">
+            <option value="">Sort By</option>
+            <option value="name_asc" {% if request.args.get('sort_by') == 'name_asc' %}selected{% endif %}>Name A-Z</option>
+            <option value="name_desc" {% if request.args.get('sort_by') == 'name_desc' %}selected{% endif %}>Name Z-A</option>
+            <option value="price_asc" {% if request.args.get('sort_by') == 'price_asc' %}selected{% endif %}>Price Low-High</option>
+            <option value="price_desc" {% if request.args.get('sort_by') == 'price_desc' %}selected{% endif %}>Price High-Low</option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Product Cards -->
+<div class="product-grid">
+    {% for p in products %}
+    <div class="product-card">
+        <img src="{{ url_for('static', filename=p.PImage) }}" alt="{{ p.PName }}">
+        <h3>{{ p.PName }}</h3>
+        <p>{{ p.PDescription }}</p>
+        <p class="price">${{ p.UPrice }}</p>
+        <form action="/cart/add" method="post">
+            <input type="hidden" name="product_id" value="{{ p.PID }}">
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

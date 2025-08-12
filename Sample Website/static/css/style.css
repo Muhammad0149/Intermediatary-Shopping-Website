@@ -1,0 +1,390 @@
+/* General Reset */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 1rem;
+}
+
+/* Table Styling */
+table {
+    margin: 2rem auto;
+    border-collapse: collapse;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons */
+button, .btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #2980b9;
+}
+
+/* Form */
+form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+}
+
+/* Images */
+.product-image {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Flash messages */
+.flash {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 300px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Product Grid */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 15px;
+    width: 240px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain; /* ensures full image fits without cropping */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    margin: 10px 0;
+}
+
+/* =================== Invoice Styles =================== */
+
+.invoice {
+    background: #fff;
+    padding: 30px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.invoice h2 {
+    margin-top: 0;
+    font-size: 28px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.invoice .section {
+    margin-bottom: 20px;
+}
+
+.invoice .section-title {
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 6px;
+}
+
+.invoice .data {
+    margin-bottom: 10px;
+}
+
+.invoice .data span {
+    display: inline-block;
+    min-width: 130px;
+    font-weight: 500;
+}
+
+.invoice .total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #27ae60;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Print Button Styling */
+.invoice button {
+    display: block;
+    margin: 30px auto 0;
+    background-color: #2ecc71;
+}
+
+.invoice button:hover {
+    background-color: #27ae60;
+}
+@media print {
+    button,
+    .btn,
+    a[href="/dashboard"] {
+        display: none !important;
+    }
+}
+/* =================== Confirm Print Styles =================== */
+.confirm-print {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.confirm-print h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.confirm-print p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.confirm-print form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.table-container {
+    max-width: 95vw;
+    overflow-x: auto;
+    margin: 0 auto;
+}
+th, td {
+    padding: 4px 8px;              /* Reduces vertical space */
+    line-height: 1.1;              /* Reduces multi-line spacing */
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+/* Optional: Tighten form/button spacing inside table cells */
+td form {
+    margin: 0;
+    padding: 0;
+}
+
+td button {
+    padding: 4px 10px;
+    font-size: 13px;
+    line-height: 1;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.styled-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.form-box {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-box input,
+.form-box select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+/* My Orders Table */
+.orders-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.orders-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th, .orders-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.orders-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.orders-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.status-pending {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.status-completed {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    color: #e53935;
+    font-weight: bold;
+}
+
+/* Back link */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+    

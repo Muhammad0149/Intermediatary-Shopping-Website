@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Checkout</title></head>
+<body>
+    <h2>Proceed to Checkout</h2>
+    <form method="POST" action="/cart/checkout">
+        <input type="text" name="address" placeholder="Enter Address" required><br><br>
+        <select name="payment_method" required>
+            <option value="">Select Payment Method</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="Card">Card</option>
+            <option value="Online Payment">Online Payment</option>
+        </select><br><br>
+        <button type="submit">Confirm Order</button>
+    </form>
+</body>
+</html>
