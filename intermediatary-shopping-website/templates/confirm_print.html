@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Print</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="confirm-print">
+        <h2>Order Completed</h2>
+        <p>Order for <strong>{{ order.PName }}</strong> by <strong>{{ order.UName }}</strong> has been completed.</p>
+        <p>Would you like to print the invoice?</p>
+
+        <form action="/print_invoice" method="post">
+            <button type="submit" name="confirm" value="yes">Yes</button>
+            <button type="submit" name="confirm" value="no">No</button>
+        </form>
+    </div>
+</body>
+</html>

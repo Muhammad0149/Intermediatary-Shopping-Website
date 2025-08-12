@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ action }} Company</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h2>{{ action }} Company</h2>
+    <form method="POST" class="form-box">
+        <input type="text" name="CName" placeholder="Company Name" required value="{{ company.CName if company else '' }}">
+        <input type="text" name="CAddress" placeholder="Address" required value="{{ company.CAddress if company else '' }}">
+        <input type="text" name="CCountry" placeholder="Country" required value="{{ company.CCountry if company else '' }}">
+        <input type="text" name="CContact" placeholder="Contact" required value="{{ company.CContact if company else '' }}">
+        <input type="number" name="CYear" placeholder="Year Founded" required value="{{ company.CYear if company else '' }}">
+        <input type="text" name="CCategory" placeholder="Category" required value="{{ company.CCategory if company else '' }}">
+        <input type="text" name="CDescription" placeholder="Description" required value="{{ company.CDescription if company else '' }}">
+        <button type="submit" class="btn">{{ action }}</button>
+        <a href="/admin/companies" class="btn">Back</a>
+    </form>
+</body>
+</html>

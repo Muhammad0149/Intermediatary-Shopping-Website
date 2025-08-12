@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ action }} Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .form-box {
+            max-width: 400px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{ action }} Product</h2>
+
+    <form method="POST" 
+        action="{{ url_for('add_product') if action == 'Add' else url_for('edit_product', pid=product.PID) }}" 
+        class="form-box">
+
+        <input type="text" name="PName" placeholder="Product Name" required value="{{ product.PName if product else '' }}">
+        <input type="text" name="AName" placeholder="Actual Name" required value="{{ product.AName if product else '' }}">
+        <input type="text" name="PDescription" placeholder="Description" required value="{{ product.PDescription if product else '' }}">
+        <input type="text" name="PImage" placeholder="Image Path (e.g., images/item1.jpg)" required value="{{ product.PImage if product else '' }}">
+
+        <input type="number" name="APrice" placeholder="Actual Price" step="0.01" required value="{{ product.APrice if product else '' }}">
+        <input type="number" name="GST" placeholder="GST (%)" step="0.01" required value="{{ product.GST if product and product.GST is not none else '' }}">
+        <input type="number" name="Duty" placeholder="Duty (amount)" step="0.01" required value="{{ product.Duty if product and product.Duty is not none else '' }}">
+        <input type="number" name="Transport" placeholder="Transport (amount)" step="0.01" required value="{{ product.Transport if product and product.Transport is not none else '' }}">
+        <select name="CID" required>
+            <option value="">Select Company</option>
+            {% for company in companies %}
+                <option value="{{ company.CID }}"
+                    {% if product and product.CID == company.CID %}selected{% endif %}>
+                    {{ company.CName }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn">{{ action }}</button>
+        <a href="/admin/products" class="btn">Back</a>
+    </form>
+</body>
+</html>
